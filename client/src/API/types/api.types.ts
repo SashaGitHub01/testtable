@@ -1,3 +1,4 @@
+import { SortParams } from "../../types/sortParams.types"
 
 export interface PaginateRes<T> {
    data: {
@@ -11,10 +12,6 @@ export interface PaginateData<T> {
    count: number
 }
 
-export interface IGetItemsArgs {
-   sortBy?: string,
-   sortType?: string,
-   value?: string,
-   limit: number,
-   offset: number
+export interface IGetItemsArgs extends SortParams {
+
 }

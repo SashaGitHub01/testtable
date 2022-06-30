@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react'
-import { OptionType } from '.'
+import { OptionType } from '../../../hooks/useSortForm'
 
 interface SelectItemProps {
    label: string,
