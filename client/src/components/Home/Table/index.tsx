@@ -25,7 +25,10 @@ const Table: React.FC<PropsWithChildren<TableProps>> = ({ limit }) => {
       <div className="">
          <div className="border border-solid border-gray-900">
             <TableHeader />
-            <TableBody items={items} />
+            <TableBody
+               isLoading={isLoading}
+               items={items}
+            />
          </div>
          <Paginator
             disabled={isLoading}

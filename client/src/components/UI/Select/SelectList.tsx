@@ -13,7 +13,7 @@ const SelectList: React.FC<PropsWithChildren<SelectListProps>> = ({ coords, chil
       <>
          <div className="absolute left-0 top-0 opacity-0 w-full h-full" />
          <div
-            className="absolute bg-white border border-solid border-gray-300 rounded-sm"
+            className="absolute shadow-lg animate-list origin-top bg-white border border-solid border-gray-300 rounded-sm"
             style={{
                width: coords.width + 'px',
                left: coords.left + 'px',
