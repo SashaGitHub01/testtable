@@ -1,7 +1,6 @@
 const express = require('express')
 require('dotenv').config()
 const cors = require('cors')
-const morgan = require('morgan')
 const mongo = require('mongodb')
 const router = require('./routes/index.js')
 
@@ -13,7 +12,6 @@ app.use(cors({
    origin: ['http://localhost:3000', process.env.CLIENT],
    credentials: true
 }));
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms'));
 app.use(express.json());
 
 const start = async () => {
