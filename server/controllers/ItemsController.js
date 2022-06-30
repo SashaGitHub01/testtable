@@ -7,12 +7,13 @@ module.exports = class ItemsController {
    getItems = async (req, res) => {
       try {
          const { limit = 5, offset = 0, sortBy, sortType = '1', value } = req.query;
+         const skip = +offset * limit - limit;
          let type;
 
          // create options object
          switch (sortType) {
             case '1':
-               type = value;
+               type = isNaN(+value) ? value : +value;
                break;
             case '2':
                type = new RegExp(`${value}`, 'gi');
@@ -35,8 +36,8 @@ module.exports = class ItemsController {
 
          const itemsQuery = await this.db.collection('items')
             .find(sortOptions)
-            .limit(limit)
-            .skip(offset)
+            .limit(+limit)
+            .skip(skip > 0 ? skip : 0)
 
          return res.json({
             data: {
@@ -45,6 +46,7 @@ module.exports = class ItemsController {
             }
          });
       } catch (err) {
+         console.log(err);
          return res.status(500).json({
             error: err.message
          })
